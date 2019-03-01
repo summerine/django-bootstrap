@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid">
+<form method="POST" novalidate>
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-12">
+		{{ form.name|as_crispy_field }}
+	</div>
+		<div class="col-12">
+		{{form.dob|as_crispy_field}}
+	</div>
+		<div class="col-12">
+		{{form.phone|as_crispy_field}}
+	</div>
+	<div class="col-12">
+		{{ form.address|as_crispy_field }}
+	</div>
+</div>
+	<button type="submit"  class="btn btn-success">Save</button>
+</form>
+</div>
+{% endblock %}

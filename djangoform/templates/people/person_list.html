@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <p>
+    <a href="{% url 'person_add' %}" class="btn btn-primary">Add New Data</a>
+  </p>
+  <table class="table table-bordered table-responsive w-100 d-block d-md-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>DOB</th>
+        <th>Phone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for person in people %}
+        <tr>
+          <td>{{ person.name }}</a></td>
+          <td>{{ person.address }}</td>
+          <td>{{ person.dob }}</td>
+          <td>{{ person.phone }}</td>
+          <td><a href="{% url 'person_edit' person.pk %}" class="btn btn-warning btn-xs btn-sm">Edit</a>
+          <a href="{% url 'person_delete' person.pk %}" class="btn btn-danger btn-xs btn-sm">Delete</a></td>
+        </tr>
+      {% empty %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
